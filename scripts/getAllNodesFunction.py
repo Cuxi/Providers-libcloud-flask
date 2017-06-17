@@ -51,40 +51,21 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 		
 		for node in nodes:
 			pass
+			if node.state != 'terminated':
 
-			networks = node.extra['network_interfaces']
+				v4 = []
+				ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
 
-			networkInterfaces = []
-			for network in networks:
-				pass
+				v4.append(ips)
 
-				network_interfaces = {'id' : network.id, 'name' : network.name}
+				network = {'v4' : v4}
 
-				networkInterfaces.append(network_interfaces)
 
-			extra = {'root_device_type' : node.extra['root_device_type'], 'launch_time' : node.extra['launch_time'],
-			'ramdisk_id' : node.extra['ramdisk_id'], 'iam_profile' : node.extra['iam_profile'],
-			'availability' : node.extra['availability'], 'source_dest_check' : node.extra['source_dest_check'],
-			'monitoring' : node.extra['monitoring'], 'subnet_id' : node.extra['subnet_id'],
-			'ebs_optimized' : node.extra['ebs_optimized'], 'instance_tenancy' : node.extra['instance_tenancy'],
-			'platform' : node.extra['platform'], 'client_token' : node.extra['client_token'],
-			'virtualization_type' : node.extra['virtualization_type'], 'root_device_name' : node.extra['virtualization_type'],
-			'status' : node.extra['status'], 'block_device_mapping' : node.extra['block_device_mapping'],
-			'kernel_id' : node.extra['kernel_id'], 'key_name' : node.extra['key_name'],
-			'image_id' : node.extra['image_id'], 'reason' : node.extra['reason'],
-			'groups' : node.extra['groups'], 'instance_lifecycle' : node.extra['instance_lifecycle'],
-			'tags' : node.extra['tags'], 'dns_name' : node.extra['dns_name'],
-			'network_interfaces' : networkInterfaces, 'launch_index' : node.extra['launch_index'], 
-			'instance_id' : node.extra['instance_id'], 'instance_type' : node.extra['instance_type'],
-			'architecture' : node.extra['architecture'], 'hypervisor' : node.extra['hypervisor'],
-			'vpc_id' : node.extra['vpc_id'], 'private_dns' : node.extra['private_dns'],
-			'product_codes' : node.extra['product_codes']}
+				extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+				'network' : network}
 
-			attr = {'id' : node.id, 'name': node.name, 'state' : node.state, 
-			'public_ips' : node.public_ips, 'private_ips' : node.private_ips,
-			'provider' : 'Amazon', 'extra' : extra} 
-
-			node.append(attr)
+				attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+				'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
 		nodesProvider = json.dumps(node)
 

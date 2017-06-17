@@ -29,8 +29,14 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeRebooted = driver.reboot_node(idNod)
 
-				nodesProvider = driver.reboot_node(idNod)
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeRebooted
 
 	if provider == "EC2":
 		pass
@@ -53,7 +59,14 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				idNod = idNodes
 	#			print idNod
 
-				nodesProvider = driver.reboot_node(idNod)
+				nodeRebooted = driver.reboot_node(idNod)
+
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeRebooted
 	if provider == "Azure":
 		pass
 		tenantId = driverUno
@@ -72,7 +85,14 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				idNod = idNodes
 	#			print idNod
 
-				nodesProvider = driver.reboot_node(idNod)
+				nodeRebooted = driver.reboot_node(idNod)
+
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeRebooted
 
 
 
@@ -94,6 +114,13 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				idNod = idNodes
 	#			print idNod
 
-				nodesProvider = driver.reboot_node(idNod)
+				nodeRebooted = driver.reboot_node(idNod)
+
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeRebooted
 
 	return nodesProvider

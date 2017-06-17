@@ -9,7 +9,7 @@ from libcloud.compute.drivers.azure_arm import AzureNodeDriver
 from libcloud.compute.drivers.ec2 import BaseEC2NodeDriver
 from libcloud.compute.drivers.linode import LinodeNodeDriver
 
-def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_storage_account):
+def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network):
 	pass
 	nodesProvider = ''
 	if provider == "Digital Ocean":
@@ -62,10 +62,11 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 		secretKey = driverDos
 		region = driverTres
 		driverCuatro = driverCuatro
+		reg = region[0:len(region)-1]
 	#	driver = BaseEC2NodeDriver(accessId,secretKey,'eu-west-1')
 
 		cls = get_driver(Provider.EC2)
-		driver = cls(accessId, secretKey, region=region)
+		driver = cls(accessId, secretKey, region=reg)
 
 		sizesNode = driver.list_sizes()
 		imagesNode = driver.list_images()
@@ -87,44 +88,44 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 
 		node = driver.create_node(name = name, image = imageId, size = sizeName)
 
-		status = checkStatus.checkStatus(driver, node.id)
+	types = 'running'
 
-		if status == 1:
+	node = checkStatus.checkStatus(driver, nodeCreate.id, types)
+
+	if node != 0:
+		pass
+		elastic = elasticIP.setElasticIP(driver,node.id)
+		if elastic != 0:
 			pass
-			print elasticIP.setElasticIP(driver,node.id)
+			v4 = []
+			ips = {'ipaddress' : elastic.ip, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
 
-		networks = node.extra['network_interfaces']
+			v4.append(ips)
 
-		networkInterfaces = []
-		for network in networks:
-			pass
-
-			network_interfaces = {'id' : network.id, 'name' : network.name}
-
-			networkInterfaces.append(network_interfaces)
+			network = {'v4' : v4}
 
 
-		extra = {'root_device_type' : node.extra['root_device_type'], 'launch_time' : node.extra['launch_time'],
-		'ramdisk_id' : node.extra['ramdisk_id'], 'iam_profile' : node.extra['iam_profile'],
-		'availability' : node.extra['availability'], 'source_dest_check' : node.extra['source_dest_check'],
-		'monitoring' : node.extra['monitoring'], 'subnet_id' : node.extra['subnet_id'],
-		'ebs_optimized' : node.extra['ebs_optimized'], 'instance_tenancy' : node.extra['instance_tenancy'],
-		'platform' : node.extra['platform'], 'client_token' : node.extra['client_token'],
-		'virtualization_type' : node.extra['virtualization_type'], 'root_device_name' : node.extra['virtualization_type'],
-		'status' : node.extra['status'], 'block_device_mapping' : node.extra['block_device_mapping'],
-		'kernel_id' : node.extra['kernel_id'], 'key_name' : node.extra['key_name'],
-		'image_id' : node.extra['image_id'], 'reason' : node.extra['reason'],
-		'groups' : node.extra['groups'], 'instance_lifecycle' : node.extra['instance_lifecycle'],
-		'tags' : node.extra['tags'], 'dns_name' : node.extra['dns_name'],
-		'network_interfaces' : networkInterfaces, 'launch_index' : node.extra['launch_index'], 
-		'instance_id' : node.extra['instance_id'], 'instance_type' : node.extra['instance_type'],
-		'architecture' : node.extra['architecture'], 'hypervisor' : node.extra['hypervisor'],
-		'vpc_id' : node.extra['vpc_id'], 'private_dns' : node.extra['private_dns'],
-		'product_codes' : node.extra['product_codes']}
+			extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+			'network' : network}
 
-		attr = {'id' : node.id, 'name': node.name, 'state' : node.state, 
-		'public_ips' : node.public_ips, 'private_ips' : node.private_ips,
-		'provider' : 'Amazon', 'extra' : extra} 
+			attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
+			'public_ip' : elastic.ip, 'provider' : 'Amazon', 'extra' : extra} 
+
+			print json.dumps(attr)
+		else:
+			v4 = []
+			ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
+
+			v4.append(ips)
+
+			network = {'v4' : v4}
+
+
+			extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+			'network' : network}
+
+			attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+			'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra, 'elastic' : '0'}
 
 		nodesProvider = json.dumps(attr)
 
@@ -134,12 +135,25 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 		subscriptionId = driverDos
 		applicationId = driverTres
 		keyPaswd = driverCuatro
-		ex_resource_group = location
 		driver = AzureNodeDriver(tenantId,subscriptionId,applicationId,keyPaswd)
 
-		sizesNode = driver.list_sizes()
-		imagesNode = driver.list_images()
+		locations = driver.list_locations()
+		networks = driver.ex_list_networks()
 
+		for network in networks:
+			pass
+			if network.name == ex_network:
+				pass
+				ex_network = network
+
+		for loc in locations:
+			pass
+			if loc.id == location:
+				pass
+				locationID = loc
+
+		sizesNode = driver.list_sizes(location=locationID)
+		imagesNode = driver.list_images(location=locationID, ex_publisher=None, ex_offer=None, ex_sku=None, ex_version=None)
 		for sizeNode in sizesNode:
 			if sizeNode.name == size:
 				pass
@@ -151,9 +165,11 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 				imageId = imageNode
 
 		
-		node = driver.create_node(name, sizeName, imageId, None, ex_resource_group, ex_storage_account)
-		nodesProvider = json.dumps(node)
+		node = driver.create_node(name, sizeName, imageId, None, 
+			None, None,location = locationID,
+			ex_network = ex_network, ex_subnet= None, ex_nic=None)
 
+		nodesProvider = node
 
 
 	if provider == "Linode":

@@ -29,8 +29,14 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeDelete = driver.destroy_node(idNod)
 
-				nodesProvider = driver.destroy_node(idNod)
+				types = 'terminated'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeDelete
 
 	if provider == "EC2":
 		pass
@@ -52,8 +58,24 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				public_ips = driver.ex_describe_all_addresses(only_associated = True)
 
-				nodesProvider = driver.destroy_node(idNod)
+				for public_ip in public_ips:
+
+					if public_ip.instance_id == idNod.id:
+						ip = public_ip
+						
+						nodeDelete = driver.destroy_node(idNod)
+
+						driver.ex_release_address(ip, domain = ip.domain)
+
+						types = 'terminated'
+
+						node = checkStatus.checkStatus(driver, idNod.id, types)
+
+						if node != 0:
+							nodesProvider = nodeDelete
+					break
 	if provider == "Azure":
 		pass
 		tenantId = driverUno
@@ -72,7 +94,14 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				idNod = idNodes
 	#			print idNod
 
-				nodesProvider = driver.destroy_node(idNod)
+				nodeDelete = driver.destroy_node(idNod)
+
+				types = 'terminated'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeDelete
 
 
 
@@ -93,7 +122,13 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeDelete = driver.destroy_node(idNod)
 
-				nodesProvider = driver.reboot_node(idNod)
+				types = 'terminated'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeDelete
 
 	return nodesProvider

@@ -29,8 +29,14 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeStopped = driver.ex_shutdown_node(idNod)
 
-				nodesProvider = driver.ex_shutdown_node(idNod)
+				types = 'stopped'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStopped
 
 	if provider == "EC2":
 		pass
@@ -50,11 +56,17 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 			#print idsNodes
 			if idNodes.id == nodeId:
 				pass
-				print 'entra'
 				idNod = idNodes
 	#			print idNod
+				nodeStopped = driver.ex_stop_node(idNod)
 
-				nodesProvider = driver.ex_stop_node(idNod)
+				types = 'stopped'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+				nodesProvider = nodeStopped
+
 	if provider == "Azure":
 		pass
 		tenantId = driverUno
@@ -72,8 +84,14 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeStopped = driver.ex_stop_node(idNod)
 
-				nodesProvider = driver.ex_stop_node(idNod)
+				types = 'stopped'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStopped
 
 
 
@@ -94,6 +112,13 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
-				nodesProvider = driver.ex_stop_node(idNod)
+				nodeStopped = driver.ex_stop_node(idNod)
+
+				types = 'stopped'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStopped
 
 	return nodesProvider

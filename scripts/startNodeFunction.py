@@ -29,8 +29,14 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeStarted = driver.ex_power_on_node(idNod)
 
-				nodesProvider = driver.ex_power_on_node(idNod)
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStarted
 
 	if provider == "EC2":
 		pass
@@ -53,8 +59,15 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				print 'entra'
 				idNod = idNodes
 	#			print idNod
+				nodeStarted = driver.ex_start_node(idNod)
 
-				nodesProvider = driver.ex_start_node(idNod)
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStarted
+
 	if provider == "Azure":
 		pass
 		tenantId = driverUno
@@ -72,8 +85,14 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
+				nodeStarted = driver.ex_start_node(idNod)
 
-				nodesProvider = driver.ex_start_node(idNod)
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStarted
 
 
 
@@ -94,6 +113,13 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				pass
 				idNod = idNodes
 	#			print idNod
-				nodesProvider = driver.ex_start_node(idNod)
+				nodeStarted = driver.ex_start_node(idNod)
+
+				types = 'running'
+
+				node = checkStatus.checkStatus(driver, idNod.id, types)
+
+				if node != 0:
+					nodesProvider = nodeStarted
 
 	return nodesProvider

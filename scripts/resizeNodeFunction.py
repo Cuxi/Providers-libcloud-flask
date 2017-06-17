@@ -61,7 +61,6 @@ def resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
 		for idNodes in idsNodes:
 			#print idsNodes
 			if idNodes.id == nodeId:
-				print 'entraUno'
 				pass
 				idNod = idNodes
 	#			print idNod
@@ -69,7 +68,6 @@ def resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
 		for sizeNode in sizesNode:
 			if sizeNode.id == size:
 				pass
-				print 'entra'
 				sizeName = sizeNode
 
 		nodesProvider = driver.ex_change_node_size(idNod, sizeName)
