@@ -101,12 +101,23 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 			#print idsNodes
 			if idNodes.id == nodeId:
 				pass
-				idNod = idNodes
+				node = idNodes
 	#			print idNod
+				v4 = []
+				ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
 
-				nodesProvider = json.dumps(idNod)
+				v4.append(ips)
+
+				network = {'v4' : v4}
 
 
+				extra = {'instance_type' : node.extra['properties']['hardwareProfile']['vmSize'],
+				'network' : network}
+
+				attr = {'id' : node.extra['properties']['vmId'], 'region' : node.extra['location'], 'name': node.name, 'state' : node.state, 
+				'public_ip' : node.public_ips, 'provider' : 'Azure Virtual machines', 'extra' : extra} 
+
+				nodesProvider = json.dumps(node)
 
 	if provider == "Linode":
 		pass

@@ -169,7 +169,27 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 			None, None,location = locationID,
 			ex_network = ex_network, ex_subnet= None, ex_nic=None)
 
-		nodesProvider = node
+		types = 'running'
+
+		node = checkStatus.checkStatus(driver, nodeCreate.id, types)
+
+		if node != 0:
+			pass
+			v4 = []
+			ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
+
+			v4.append(ips)
+
+			network = {'v4' : v4}
+
+
+			extra = {'instance_type' : node.extra['properties']['hardwareProfile']['vmSize'],
+			'network' : network}
+
+			attr = {'id' : node.extra['properties']['vmId'], 'region' : node.extra['location'], 'name': node.name, 'state' : node.state, 
+			'public_ip' : node.public_ips, 'provider' : 'Azure Virtual machines', 'extra' : extra} 
+
+			nodesProvider = json.dumps(attr)
 
 
 	if provider == "Linode":
