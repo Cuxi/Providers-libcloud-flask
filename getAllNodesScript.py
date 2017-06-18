@@ -3,6 +3,10 @@ from flask import Flask
 from flask import jsonify, request
 from flask_restful import reqparse, abort, Api, Resource
 import getAllNodesFunction, getLocationsFunction, getNodeFunction
+import deleteNodeFunction
+import createNodeFuntion
+import resizeNodeFunction
+import shutdownNodeFunction, startNodeFunction, rebootNodeFunction
 
 app = Flask(__name__)
 api = Api(app)
@@ -139,7 +143,7 @@ class CreateNode(Resource):
  			location = args['location']
  			ex_network = args['ex_network']
 
- 			nodes = createNodeFunction.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network)
+ 			nodes = createNodeFuntion.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network)
 
 	 		idsNodes.append(nodes)
 	 		return idsNodes

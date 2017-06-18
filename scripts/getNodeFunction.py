@@ -57,33 +57,33 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				node = idNodes
 
 				if node.state == 'terminated':
-						v4 = []
-						ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
+					v4 = []
+					ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
 
-						v4.append(ips)
+					v4.append(ips)
 
-						network = {'v4' : v4}
-
-
-						extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-						'network' : network}
-
-						attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
-						'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extra}
-					if node.state != 'terminated':
-						v4 = []
-						ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
-
-						v4.append(ips)
-
-						network = {'v4' : v4}
+					network = {'v4' : v4}
 
 
-						extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-						'network' : network}
+					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+					'network' : network}
 
-						attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
-						'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
+					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+					'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extra}
+				if node.state != 'terminated':
+					v4 = []
+					ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
+
+					v4.append(ips)
+
+					network = {'v4' : v4}
+
+
+					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+					'network' : network}
+
+					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
 			nodesProvider = json.dumps(attr)
 	if provider == "Azure":

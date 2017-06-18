@@ -2,6 +2,7 @@
 import json
 import sys
 import os
+import checkStatus
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 from libcloud.compute.drivers.digitalocean import DigitalOceanNodeDriver
@@ -75,7 +76,9 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 						if node != 0:
 							nodesProvider = nodeDelete
-					break
+						else:
+							nodesProvider = 'null'
+
 	if provider == "Azure":
 		pass
 		tenantId = driverUno

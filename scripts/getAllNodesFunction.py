@@ -34,7 +34,7 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 			node.append(attr)
 
-		nodesProvider = json.dumps(node)
+		nodesProvider = json.dumps(attr)
 	if provider == "EC2":
 		pass
 		accessId = driverUno
@@ -48,7 +48,7 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 		nodes = driver.list_nodes()
 
-		
+		nodeFunction = []
 		for node in nodes:
 			pass
 			if node.state != 'terminated':
@@ -67,7 +67,8 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 				attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
 				'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
-		nodesProvider = json.dumps(node)
+				nodeFunction.append(json.dumps(attr))
+		nodesProvider = nodeFunction
 
 	if provider == "Azure":
 		pass

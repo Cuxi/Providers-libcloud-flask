@@ -2,6 +2,7 @@
 import json
 import sys
 import os
+import checkStatus
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 from libcloud.compute.drivers.digitalocean import DigitalOceanNodeDriver
@@ -65,7 +66,7 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				node = checkStatus.checkStatus(driver, idNod.id, types)
 
 				if node != 0:
-				nodesProvider = nodeStopped
+					nodesProvider = nodeStopped
 
 	if provider == "Azure":
 		pass

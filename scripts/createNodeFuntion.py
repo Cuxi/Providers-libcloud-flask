@@ -2,6 +2,8 @@
 import json
 import sys
 import os
+import checkStatus
+import elasticIP
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 from libcloud.compute.drivers.digitalocean import DigitalOceanNodeDriver
@@ -86,48 +88,48 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 				pass
 				imageId = imageNode
 
-		node = driver.create_node(name = name, image = imageId, size = sizeName)
+		nodeCreate = driver.create_node(name = name, image = imageId, size = sizeName)
 
-	types = 'running'
+		types = 'running'
 
-	node = checkStatus.checkStatus(driver, nodeCreate.id, types)
+		node = checkStatus.checkStatus(driver, nodeCreate.id, types)
 
-	if node != 0:
-		pass
-		elastic = elasticIP.setElasticIP(driver,node.id)
-		if elastic != 0:
+		if node != 0:
 			pass
-			v4 = []
-			ips = {'ipaddress' : elastic.ip, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
+			elastic = elasticIP.setElasticIP(driver,node.id)
+			if elastic != 0:
+				pass
+				v4 = []
+				ips = {'ipaddress' : elastic.ip, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
 
-			v4.append(ips)
+				v4.append(ips)
 
-			network = {'v4' : v4}
-
-
-			extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-			'network' : network}
-
-			attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
-			'public_ip' : elastic.ip, 'provider' : 'Amazon', 'extra' : extra} 
-
-			print json.dumps(attr)
-		else:
-			v4 = []
-			ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
-
-			v4.append(ips)
-
-			network = {'v4' : v4}
+				network = {'v4' : v4}
 
 
-			extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-			'network' : network}
+				extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+				'network' : network}
 
-			attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
-			'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra, 'elastic' : '0'}
+				attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
+				'public_ip' : elastic.ip, 'provider' : 'Amazon', 'extra' : extra} 
 
-		nodesProvider = json.dumps(attr)
+				print json.dumps(attr)
+			else:
+				v4 = []
+				ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
+
+				v4.append(ips)
+
+				network = {'v4' : v4}
+
+
+				extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+				'network' : network}
+
+				attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+				'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra, 'elastic' : '0'}
+
+			nodesProvider = json.dumps(attr)
 
 	if provider == "Azure":
 		pass
@@ -165,7 +167,7 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 				imageId = imageNode
 
 		
-		node = driver.create_node(name, sizeName, imageId, None, 
+		nodeCreate = driver.create_node(name, sizeName, imageId, None, 
 			None, None,location = locationID,
 			ex_network = ex_network, ex_subnet= None, ex_nic=None)
 
