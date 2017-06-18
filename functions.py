@@ -11,12 +11,9 @@ import shutdownNodeFunction, startNodeFunction, rebootNodeFunction
 app = Flask(__name__)
 api = Api(app)
 
-idsNodes = {}
+
 
 class GetAllNodes(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -33,16 +30,14 @@ class GetAllNodes(Resource):
  			driverTres = args['driverTres']
  			driverCuatro = args['driverCuatro']
 
- 			idsNodes = getAllNodesFunction.getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro)
+ 			nodes = getAllNodesFunction.getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 class GetLocations(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -59,19 +54,15 @@ class GetLocations(Resource):
  			driverTres = args['driverTres']
  			driverCuatro = args['driverCuatro']
 
- 			idsNodes = getLocationsFunction.getLocations(provider,driverUno,driverDos,driverTres,driverCuatro)
+ 			nodes = getLocationsFunction.getLocations(provider,driverUno,driverDos,driverTres,driverCuatro)
 
-#	 		idsNodes.append(nodes)
-#	 		return idsNodes[nodes]
-			return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class GetNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -90,17 +81,15 @@ class GetNode(Resource):
  			driverCuatro = args['driverCuatro']
  			nodeId = args['nodeId']
 
- 			idsNodes = getNodeFunction.getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
+ 			nodes = getNodeFunction.getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class DeleteNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -119,17 +108,15 @@ class DeleteNode(Resource):
  			driverCuatro = args['driverCuatro']
  			nodeId = args['nodeId']
 
- 			idsNodes = deleteNodeFunction.deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
+ 			nodes = deleteNodeFunction.deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class CreateNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -156,17 +143,15 @@ class CreateNode(Resource):
  			location = args['location']
  			ex_network = args['ex_network']
 
- 			idsNodes = createNodeFuntion.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network)
+ 			nodes = createNodeFuntion.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class ResizeNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -187,17 +172,15 @@ class ResizeNode(Resource):
  			size = args['size']
  			nodeId = args['nodeId']
  			
- 			idsNodes = resizeNodeFunction.resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
+ 			nodes = resizeNodeFunction.resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class ShutdownNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -216,17 +199,15 @@ class ShutdownNode(Resource):
  			driverCuatro = args['driverCuatro']
  			nodeId = args['nodeId']
 
- 			idsNodes = shutdownNodeFunction.shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
+ 			nodes = shutdownNodeFunction.shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class StartNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -245,17 +226,15 @@ class StartNode(Resource):
  			driverCuatro = args['driverCuatro']
  			nodeId = args['nodeId']
 
- 			idsNodes = startNodeFunction.startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
+ 			nodes = startNodeFunction.startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
 class RebootNode(Resource):
-	def get(self):
-		pass
-		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -274,9 +253,10 @@ class RebootNode(Resource):
  			driverCuatro = args['driverCuatro']
  			nodeId = args['nodeId']
 
- 			idsNodes = rebootNodeFunction.rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
+ 			nodes = rebootNodeFunction.rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
-	 		return {idsNodes : idsNodes}
+	 		idsNodes.append(nodes)
+	 		return idsNodes
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
