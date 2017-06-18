@@ -11,7 +11,7 @@ import shutdownNodeFunction, startNodeFunction, rebootNodeFunction
 app = Flask(__name__)
 api = Api(app)
 
-
+idsNodes = {}
 
 class GetAllNodes(Resource):
 	def post(self):
@@ -38,6 +38,9 @@ class GetAllNodes(Resource):
 	 	except Exception as e:
 	 		return {'error': str(e)}
 class GetLocations(Resource):
+	def get(self):
+		pass
+		return {idsNodes : idsNodes}
 	def post(self):
 	 	try:
 	 		parser = reqparse.RequestParser()
@@ -54,10 +57,11 @@ class GetLocations(Resource):
  			driverTres = args['driverTres']
  			driverCuatro = args['driverCuatro']
 
- 			nodes = getLocationsFunction.getLocations(provider,driverUno,driverDos,driverTres,driverCuatro)
+ 			idsNodes = getLocationsFunction.getLocations(provider,driverUno,driverDos,driverTres,driverCuatro)
 
-	 		idsNodes.append(nodes)
-	 		return idsNodes
+#	 		idsNodes.append(nodes)
+#	 		return idsNodes[nodes]
+			return {idsNodes : idsNodes}
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
