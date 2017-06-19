@@ -47,10 +47,11 @@ def resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
 		driverCuatro = driverCuatro
 		size = size
 		nodeId = nodeId
+		reg = region[0:len(region)-1]
 	#	driver = BaseEC2NodeDriver(accessId,secretKey,'eu-west-1')
 
 		cls = get_driver(Provider.EC2)
-		driver = cls(accessId, secretKey, region=region)
+		driver = cls(accessId, secretKey, region=reg)
 
 		idsNodes = driver.list_nodes()
 		sizesNode = driver.list_sizes()

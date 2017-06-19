@@ -43,10 +43,11 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 		region = driverTres
 		driverCuatro = driverCuatro
 		nodeId = nodeId
+		reg = region[0:len(region)-1]
 	#	driver = BaseEC2NodeDriver(accessId,secretKey,'eu-west-1')
 
 		cls = get_driver(Provider.EC2)
-		driver = cls(accessId, secretKey, region=region)
+		driver = cls(accessId, secretKey, region=reg)
 
 		idsNodes = driver.list_nodes()
 
@@ -68,7 +69,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
 					'network' : network}
 
-					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+					attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
 					'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extra}
 				if node.state != 'terminated':
 					v4 = []
@@ -82,7 +83,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
 					'network' : network}
 
-					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+					attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
 					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
 			nodesProvider = json.dumps(attr)

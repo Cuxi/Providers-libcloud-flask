@@ -46,10 +46,11 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 		region = driverTres
 		driverCuatro = driverCuatro
 		nodeId = nodeId
+		reg = region[0:len(region)-1]
 	#	driver = BaseEC2NodeDriver(accessId,secretKey,'eu-west-1')
 
 		cls = get_driver(Provider.EC2)
-		driver = cls(accessId, secretKey, region=region)
+		driver = cls(accessId, secretKey, region=reg)
 
 		idsNodes = driver.list_nodes()
 
