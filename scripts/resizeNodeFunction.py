@@ -101,31 +101,4 @@ def resizeNode(provider,driverUno,driverDos,driverTres,driverCuatro,size,nodeId)
 
 
 
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		size = size
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		idsNodes = driver.list_nodes()
-		sizesNode = driver.list_sizes()
-
-		for idNodes in idsNodes:
-			#print idsNodes
-			if idNodes.id == nodeId:
-				pass
-				idNod = idNodes
-	#			print idNod
-
-		for sizeNode in sizesNode:
-			if sizeNode.name == size:
-				pass
-				sizeName = sizeNode
-
-				nodesProvider = driver.ex_resize_node(sizeName, idNod)
-
 	return nodesProvider
