@@ -82,17 +82,7 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 		print nodes
 
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		driver = LinodeNodeDriver(apiKey)
 
-		nodes = driver.list_nodes()
-
-		nodesProvider = nodes
 	return nodesProvider
 
 
