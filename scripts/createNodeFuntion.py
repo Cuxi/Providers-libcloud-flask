@@ -173,7 +173,7 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 
 		types = 'running'
 
-		node = checkStatus.checkStatus(driver, nodeCreate.id, types)
+		node = checkStatus.checkStatusAzure(driver, nodeCreate.id, types)
 
 		if node != 0:
 			pass

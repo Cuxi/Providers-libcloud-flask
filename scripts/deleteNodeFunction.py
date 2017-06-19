@@ -99,9 +99,9 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 				nodeDelete = driver.destroy_node(idNod)
 
-				types = 'terminated'
+				types = 'deleting'
 
-				node = checkStatus.checkStatus(driver, idNod.id, types)
+				node = checkStatus.checkStatusAzure(driver, idNod.id, types)
 
 				if node != 0:
 					nodesProvider = nodeDelete

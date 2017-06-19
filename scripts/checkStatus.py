@@ -28,3 +28,24 @@ def checkStatus(driver,ide,types):
 			i = idNod
 			break
 	return i
+def checkStatusAzure(driver,ide,types):
+	pass
+	pass
+	i = 0
+	j = 0
+	while i != 1:
+		idsNodes = driver.list_nodes()
+		for idNodes in idsNodes:
+			#print idsNodes
+			if idNodes.extra['id'] == ide:
+				pass
+				idNod = idNodes
+				
+		if idNod.state != types:
+			pass
+			i = 0
+		if idNod.state == types:
+			pass
+			i = idNod
+			break
+	return i

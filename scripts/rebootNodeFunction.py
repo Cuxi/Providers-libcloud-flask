@@ -65,7 +65,7 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 				types = 'running'
 
-				node = checkStatus.checkStatus(driver, idNod.id, types)
+				node = checkStatus.checkStatusAzure(driver, idNod.id, types)
 
 				if node != 0:
 					nodesProvider = nodeRebooted
