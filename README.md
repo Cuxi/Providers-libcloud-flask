@@ -59,13 +59,17 @@ Then we're showing you the needed variables in scripts.
   * ResizeNode
   
   NodeId : Virtual Machine's ID
+  
   Size : Virtual Machine's size ID
   
   * CreateNode
   
   DriverDos : SSH Key 
+  
   Size : Virtual Machine's size ID
+  
   Image : Image's ID 
+  
   Location : Location's ID
   
   
@@ -76,7 +80,9 @@ Then we're showing you the needed variables in scripts.
   * In common 
   
     DriverUno : Access Key ID
+    
     DriverDos : Secret Key
+    
     DriverTres : Region
   
   * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
@@ -86,11 +92,13 @@ Then we're showing you the needed variables in scripts.
   * ResizeNode
   
     NodeId : Virtual Machine's ID
+    
     Size : Virtual Machine's size ID
   
   * CreateNode
   
     Size : Virtual Machine's size ID
+    
     Image : Image's ID 
 
 
@@ -99,8 +107,11 @@ Then we're showing you the needed variables in scripts.
   * In common
   
     DriverUno : Directory ID (Tenant ID )
+    
     DriverDos : ID Subscription
+    
     DriverTres : Application ID
+    
     DriverCuatro : Key (Password)
   
   * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
@@ -110,13 +121,18 @@ Then we're showing you the needed variables in scripts.
   * ResizeNode (Int this moments is not aviable this method in Libcloud)
   
     NodeId : Virtual Machine's ID
+    
     Size : Virtual Machine's size ID
   
   * CreateNode
   
     Size : Virtual Machine's size ID
+    
     Image : Image's ID 
+    
     Ex_resource_group : Resource Group's name
+    
     Location : Location's ID
+    
     Ex_network : Network's name
   
