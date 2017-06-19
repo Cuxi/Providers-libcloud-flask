@@ -107,31 +107,4 @@ def deleteNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					nodesProvider = nodeDelete
 
 
-
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		idsNodes = driver.list_nodes()
-
-		for idNodes in idsNodes:
-			#print idsNodes
-			if idNodes.id == nodeId:
-				pass
-				idNod = idNodes
-	#			print idNod
-				nodeDelete = driver.destroy_node(idNod)
-
-				types = 'terminated'
-
-				node = checkStatus.checkStatus(driver, idNod.id, types)
-
-				if node != 0:
-					nodesProvider = nodeDelete
-
 	return nodesProvider
