@@ -96,31 +96,4 @@ def shutdownNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					nodesProvider = nodeStopped
 
 
-
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		idsNodes = driver.list_nodes()
-
-		for idNodes in idsNodes:
-			#print idsNodes
-			if idNodes.id == nodeId:
-				pass
-				idNod = idNodes
-	#			print idNod
-				nodeStopped = driver.ex_stop_node(idNod)
-
-				types = 'stopped'
-
-				node = checkStatus.checkStatus(driver, idNod.id, types)
-
-				if node != 0:
-					nodesProvider = nodeStopped
-
 	return nodesProvider
