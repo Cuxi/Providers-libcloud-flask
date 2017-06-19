@@ -11,7 +11,7 @@ from libcloud.compute.drivers.azure_arm import AzureNodeDriver
 from libcloud.compute.drivers.ec2 import BaseEC2NodeDriver
 from libcloud.compute.drivers.linode import LinodeNodeDriver
 
-def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network):
+def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,ex_resource_group,location,ex_network):
 	pass
 	nodesProvider = ''
 	if provider == "Digital Ocean":
@@ -146,10 +146,12 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 			pass
 			if network.name == ex_network:
 				pass
-				ex_network = network
+				print 'entra'
+				net = network
 
 		for loc in locations:
 			pass
+			print loc
 			if loc.id == location:
 				pass
 				locationID = loc
@@ -166,14 +168,18 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 				pass
 				imageId = imageNode
 
+		#subnet = driver.ex_list_subnets(net);
+		name_ip = name+'-ip'
+		public_ip = driver.ex_create_public_ip(name_ip, ex_resource_group, location=locationID)
+		#nic = driver.ex_create_network_interface(name+'-nic', subnet[0] , ex_resource_group, locationID)
 		
-		nodeCreate = driver.create_node(name, sizeName, imageId, None, 
-			None, None,location = locationID,
-			ex_network = ex_network, ex_subnet= None, ex_nic=None)
-
+		node = driver.create_node(name, sizeName, imageId, None, 
+			ex_resource_group, 'debian5303',location=locationID,
+			ex_network = ex_network)
+		
 		types = 'running'
 
-		node = checkStatus.checkStatusAzure(driver, nodeCreate.id, types)
+		node = checkStatus.checkStatus(driver, nodeCreate.id, types)
 
 		if node != 0:
 			pass
@@ -192,7 +198,6 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 			'public_ip' : node.public_ips, 'provider' : 'Azure Virtual machines', 'extra' : extra} 
 
 			nodesProvider = json.dumps(attr)
-
 
 	if provider == "Linode":
 		pass
