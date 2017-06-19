@@ -2,6 +2,8 @@
 
 ## Flask microframework Introduction
 
+This is a project to use in python with Libcloud's library, and use some Cloud Providers. 
+
 ### How to Work with the Code
 
 Clone this repository:
