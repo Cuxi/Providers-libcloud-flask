@@ -97,32 +97,4 @@ def rebootNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					nodesProvider = nodeRebooted
 
 
-
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		idsNodes = driver.list_nodes()
-
-		for idNodes in idsNodes:
-			#print idsNodes
-			if idNodes.id == nodeId:
-				pass
-				idNod = idNodes
-	#			print idNod
-
-				nodeRebooted = driver.reboot_node(idNod)
-
-				types = 'running'
-
-				node = checkStatus.checkStatus(driver, idNod.id, types)
-
-				if node != 0:
-					nodesProvider = nodeRebooted
-
 	return nodesProvider
