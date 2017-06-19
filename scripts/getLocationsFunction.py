@@ -181,15 +181,5 @@ def getLocations(provider,driverUno,driverDos,driverTres,driverCuatro):
 				nodelocations.append(node)
 
 		nodesProvider = json.dumps(nodelocations)
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		driver = DigitalOceanNodeDriver(apiKey)
 
-		listLocations = driver.list_locations()
-
-		nodesProvider = listLocations
 	return nodesProvider
