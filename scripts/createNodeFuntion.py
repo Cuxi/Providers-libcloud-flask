@@ -198,18 +198,5 @@ def createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,im
 			'public_ip' : node.public_ips, 'provider' : 'Azure Virtual machines', 'extra' : extra} 
 
 			nodesProvider = json.dumps(attr)
-
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		node = driver.create_node(name, image, size, auth, location)
-		nodesProvider = json.dumps(node)
-
-		
+	
 	return nodesProvider
