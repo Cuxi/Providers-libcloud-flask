@@ -75,48 +75,48 @@ Then we're showing you the needed variables in scripts.
 
   * In common 
   
-  DriverUno : Access Key ID
-  DriverDos : Secret Key
-  DriverTres : Region
+    DriverUno : Access Key ID
+    DriverDos : Secret Key
+    DriverTres : Region
   
   * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
   
-  NodeId : Virtual Machine's ID
+    NodeId : Virtual Machine's ID
   
   * ResizeNode
   
-  NodeId : Virtual Machine's ID
-  Size : Virtual Machine's size ID
+    NodeId : Virtual Machine's ID
+    Size : Virtual Machine's size ID
   
   * CreateNode
   
-  Size : Virtual Machine's size ID
-  Image : Image's ID 
+    Size : Virtual Machine's size ID
+    Image : Image's ID 
 
 
 **Azure**
 
   * In common
   
-  DriverUno : Directory ID (Tenant ID )
-  DriverDos : ID Subscription
-  DriverTres : Application ID
-  DriverCuatro : Key (Password)
+    DriverUno : Directory ID (Tenant ID )
+    DriverDos : ID Subscription
+    DriverTres : Application ID
+    DriverCuatro : Key (Password)
   
   * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
   
-  NodeId : Virtual Machine's ID
+    NodeId : Virtual Machine's ID
   
   * ResizeNode (Int this moments is not aviable this method in Libcloud)
   
-  NodeId : Virtual Machine's ID
-  Size : Virtual Machine's size ID
+    NodeId : Virtual Machine's ID
+    Size : Virtual Machine's size ID
   
   * CreateNode
   
-  Size : Virtual Machine's size ID
-  Image : Image's ID 
-  Ex_resource_group : Resource Group's name
-  Location : Location's ID
-  Ex_network : Network's name
+    Size : Virtual Machine's size ID
+    Image : Image's ID 
+    Ex_resource_group : Resource Group's name
+    Location : Location's ID
+    Ex_network : Network's name
   
