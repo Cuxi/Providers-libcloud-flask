@@ -120,23 +120,6 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 				nodesProvider = json.dumps(node)
 
-	if provider == "Linode":
-		pass
-		apiKey = driverUno
-		driverDos = driverDos
-		driverTres = driverTres
-		driverCuatro = driverCuatro
-		nodeId = nodeId
-		driver = LinodeNodeDriver(apiKey)
-
-		for idNodes in idsNodes:
-			#print idsNodes
-			if idNodes.id == nodeId:
-				pass
-				idNod = idNodes
-	#			print idNod
-
-				nodesProvider = json.dumps(idNod)
 
 	return nodesProvider
 
