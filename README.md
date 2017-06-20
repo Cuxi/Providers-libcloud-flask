@@ -2,7 +2,16 @@
 
 ## Flask microframework Introduction
 
-This is a project to use in python with Libcloud's library, and use some Cloud Providers. 
+This is a project to use in python with Libcloud's library compute, to create, resize, stop, start, delete and get information of Virtual Machines that we want to have in their cloud compute.  
+
+You can see libcloud's files:
+
+-Azure : [azure_arm](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/azure_arm.py)
+
+-Amazon : [EC2](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/ec2.py)
+
+-Digital Ocean : [DO](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/digitalocean.py)
+
 
 ### How to Work with the Code
 
@@ -46,95 +55,214 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Oc
 
 ### Explaining variables in differents providers
 
-Then we're showing you the needed variables in scripts.
+Then, you can see how it works and the differents parts of scripts:
 
 **Digital Ocean**
   
-  * In common 
+  * Variables for connecting with the provider
   
-  DriverUno : access Key
+    driverUno : access Key
   
-  * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
+  * GetNode
+    
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
+    ```
+    You need to get your Virtual Machine's information a Node's ID (variable nodeId).
+    
+  * DeleteNode
   
-  NodeId : Virtual Machine's ID
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
+    ```
+    You need to delete your Virtual Machine a Node's ID (variable nodeId).
+  
+  * ShutdownNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
+    ```
+    You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
+  
+  * StartNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
+    ```
+    You need to start your Virtual Machine a Node's ID (variable nodeId).
+  
+  * RebootNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
+    ```
+    You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   * ResizeNode
   
-  NodeId : Virtual Machine's ID
-  
-  Size : Virtual Machine's size ID
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
+    ```
+    You need to resize your Virtual Machine:
+    
+      -A Node's ID (variable nodeId).
+      
+      -A Size's name (variable size).
   
   * CreateNode
   
-  DriverDos : SSH Key 
-  
-  Size : Virtual Machine's size ID
-  
-  Image : Image's ID 
-  
-  Location : Location's ID
-  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"888888","driverTres":"n","driverCuatro":"n","name":"testFlask","size":"512mb","image":"25092162","ex_resource_group":"n","location":"nyc1","ex_network":"n"}' http://localhost:5003/CreateNode
+    ```
+    You need to create your Virtual Machine (node):
+    
+      -A ssh key (variable driverDos).
+      
+      -A name for your node (variable name).
+      
+      -A Size's name (variable size).
+      
+      -A image's ID (variable image).
+      
+      -A location for your node (variable location).  
   
 **Amazon**
 
 *Remember that in the case of the Region you must write the id of the datacenter, like us-east-1a*
 
-  * In common 
+  * Variables for connecting with the provider
   
-    DriverUno : Access Key ID
+    driverUno : Access Key ID
     
-    DriverDos : Secret Key
+    driverDos : Secret Key
     
-    DriverTres : Region
+    driverTres : Region
   
-  * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
+  * GetNode
+    
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
+    ```
+    You need to get your Virtual Machine's information a Node's ID (variable nodeId).
+    
+  * DeleteNode
   
-    NodeId : Virtual Machine's ID
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
+    ```
+    You need to delete your Virtual Machine a Node's ID (variable nodeId).
+  
+  * ShutdownNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
+    ```
+    You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
+  
+  * StartNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
+    ```
+    You need to start your Virtual Machine a Node's ID (variable nodeId).
+  
+  * RebootNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
+    ```
+    You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   * ResizeNode
   
-    NodeId : Virtual Machine's ID
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
+    ```
+    You need to resize your Virtual Machine:
     
-    Size : Virtual Machine's size ID
+      -A Node's ID (variable nodeId).
+      
+      -A Size's name (variable size).
   
   * CreateNode
   
-    Size : Virtual Machine's size ID
-    
-    Image : Image's ID 
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","name":"testFlask","size":"t2.micro","image":"amzn-ami-hvm-2017.03.0.201","ex_resource_group":"n","location":"n","ex_network":"n"}' http://localhost:5003/CreateNode
+    ```
+    You need to create your Virtual Machine (node):
+      
+      -A name for your node (variable name).
+      
+      -A Size's name (variable size).
+      
+      -A image's ID (variable image).
 
 
 **Azure**
 
-  * In common
+  * Variables for connecting with the provider
   
-    DriverUno : Directory ID (Tenant ID )
+    driverUno : Directory ID (Tenant ID )
     
-    DriverDos : ID Subscription
+    driverDos : ID Subscription
     
-    DriverTres : Application ID
+    driverTres : Application ID
     
-    DriverCuatro : Key (Password)
+    driverCuatro : Key (Password)
   
-  * GetNode, DeleteNode, ShutdownNode, StartNode and RebootNode
-  
-    NodeId : Virtual Machine's ID
-  
-  * ResizeNode (Int this moments is not aviable this method in Libcloud)
-  
-    NodeId : Virtual Machine's ID
+  * GetNode
     
-    Size : Virtual Machine's size ID
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/GetNode
+    ```
+    You need to get your Virtual Machine's information a Node's ID (variable nodeId).
+    
+  * DeleteNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/DeleteNode
+    ```
+    You need to delete your Virtual Machine a Node's ID (variable nodeId).
+  
+  * ShutdownNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
+    ```
+    You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
+  
+  * StartNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/StartNode
+    ```
+    You need to start your Virtual Machine a Node's ID (variable nodeId).
+  
+  * RebootNode
+  
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/RebootNode
+    ```
+    You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   * CreateNode
   
-    Size : Virtual Machine's size ID
-    
-    Image : Image's ID 
-    
-    Ex_resource_group : Resource Group's name
-    
-    Location : Location's ID
-    
-    Ex_network : Network's name
+    At moment this method is not working, there is a problem in library.
   
+    ```
+    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","name":"testFlask","size":"Basic_A0","image":"RightScaleLinex:RightImage-Ubuntu:14.04:14.2.1","ex_resource_group":"exampleName","location":"westeurope","ex_network":"exampleName"}' http://localhost:5003/CreateNode
+    ```
+    You need to create your Virtual Machine (node):
+      
+      -A name for your node (variable name).
+      
+      -A Size's name (variable size).
+      
+      -A image's ID (variable image).
+      
+      -A Resource Group's name (variable ex_resource_group).
+      
+      -A location for your node (variable location).
+      
+      -A Network's name for your node (variable ex_network)
+      
