@@ -99,6 +99,8 @@ Then, you can see how it works and the differents parts of scripts:
     You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   * ResizeNode
+    
+    To use this method you need to add the method resize_node from [resize_node.py](https://github.com/Cuxi/Providers-libcloud-flask/blob/master/scripts/resize_node.py) in your local Digital Ocean's driver.
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
