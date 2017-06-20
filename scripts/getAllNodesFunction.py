@@ -41,10 +41,11 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 		secretKey = driverDos
 		region = driverTres
 		driverCuatro = driverCuatro
+		reg = region[0:len(region)-1]
 	#	driver = BaseEC2NodeDriver(accessId,secretKey,'eu-west-1')
 
 		cls = get_driver(Provider.EC2)
-		driver = cls(accessId, secretKey, region=region)
+		driver = cls(accessId, secretKey, region=reg)
 
 		nodes = driver.list_nodes()
 
@@ -64,7 +65,7 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 				extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
 				'network' : network}
 
-				attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+				attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
 				'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
 				nodeFunction.append(json.dumps(attr))

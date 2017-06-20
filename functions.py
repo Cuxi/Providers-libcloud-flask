@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from flask import Flask
-from flask import jsonify, request
+from flask import jsonify, request, Response
 from flask_restful import reqparse, abort, Api, Resource
 import getAllNodesFunction, getLocationsFunction, getNodeFunction
 import deleteNodeFunction
@@ -33,7 +33,10 @@ class GetAllNodes(Resource):
  			nodes = getAllNodesFunction.getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro)
 
 	 		idsNodes.append(nodes)
-	 		return idsNodes
+	 		return Response(response=idsNodes,
+                    status=200,
+                    content_type="application/json")
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
@@ -57,7 +60,10 @@ class GetLocations(Resource):
  			nodes = getLocationsFunction.getLocations(provider,driverUno,driverDos,driverTres,driverCuatro)
 
 	 		idsNodes.append(nodes)
-	 		return idsNodes
+	 		return Response(response=idsNodes,
+                    status=200,
+                    content_type="application/json")
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
@@ -84,7 +90,10 @@ class GetNode(Resource):
  			nodes = getNodeFunction.getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId)
 
 	 		idsNodes.append(nodes)
-	 		return idsNodes
+	 		return Response(response=idsNodes,
+                    status=200,
+                    content_type="application/json")
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
@@ -113,6 +122,7 @@ class DeleteNode(Resource):
 	 		idsNodes.append(nodes)
 	 		return idsNodes
 
+
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
@@ -128,6 +138,7 @@ class CreateNode(Resource):
 			parser.add_argument('name', type = str)
 			parser.add_argument('size', type = str)
 			parser.add_argument('image', type = str)
+			parser.add_argument('ex_resource_group', type = str)
 			parser.add_argument('location', type = str)
 			parser.add_argument('ex_network', type = str)
 	 		idsNodes = []
@@ -140,13 +151,17 @@ class CreateNode(Resource):
  			name = args['name']
  			size = args['size']
  			image = args['image']
+ 			ex_resource_group = args['ex_resource_group']
  			location = args['location']
  			ex_network = args['ex_network']
 
- 			nodes = createNodeFuntion.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,location,ex_network)
+ 			nodes = createNodeFuntion.createNode(provider,driverUno,driverDos,driverTres,driverCuatro,name,size,image,ex_resource_group,location,ex_network)
 
 	 		idsNodes.append(nodes)
-	 		return idsNodes
+	 		return Response(response=idsNodes,
+                    status=200,
+                    content_type="application/json")
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
@@ -177,6 +192,7 @@ class ResizeNode(Resource):
 	 		idsNodes.append(nodes)
 	 		return idsNodes
 
+
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
@@ -203,6 +219,7 @@ class ShutdownNode(Resource):
 
 	 		idsNodes.append(nodes)
 	 		return idsNodes
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
@@ -231,6 +248,7 @@ class StartNode(Resource):
 	 		idsNodes.append(nodes)
 	 		return idsNodes
 
+
 	 	except Exception as e:
 	 		return {'error': str(e)}
 
@@ -257,6 +275,7 @@ class RebootNode(Resource):
 
 	 		idsNodes.append(nodes)
 	 		return idsNodes
+
 
 	 	except Exception as e:
 	 		return {'error': str(e)}
