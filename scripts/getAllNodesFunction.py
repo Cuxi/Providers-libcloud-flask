@@ -12,7 +12,7 @@ from libcloud.compute.drivers.linode import LinodeNodeDriver
 def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 	pass
 	nodesProvider = ''
-	node = []
+	nodeFunction = []
 	if provider == "Digital Ocean":
 		pass
 		accessKey = driverUno
@@ -32,9 +32,9 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 			'private_ips' : idNodes.private_ips, 'provider' : 'DigitalOcean',
 			'extra' : idNodes.extra	}
 
-			node.append(attr)
+			nodeFunction.append(attr)
 
-		nodesProvider = json.dumps(attr)
+		nodesProvider = json.dumps(nodeFunction)
 	if provider == "EC2":
 		pass
 		accessId = driverUno
@@ -49,7 +49,6 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 		nodes = driver.list_nodes()
 
-		nodeFunction = []
 		for node in nodes:
 			pass
 			if node.state != 'terminated':
@@ -68,8 +67,8 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 				attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
 				'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
 
-				nodeFunction.append(json.dumps(attr))
-		nodesProvider = nodeFunction
+				nodeFunction.append(attr)
+		nodesProvider = json.dumps(nodeFunction)
 
 	if provider == "Azure":
 		pass

@@ -50,43 +50,45 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 		driver = cls(accessId, secretKey, region=reg)
 
 		idsNodes = driver.list_nodes()
-
+		
 		for idNodes in idsNodes:
 			#print idsNodes
 			if idNodes.id == nodeId:
 				pass
 				node = idNodes
+				
+				attr = ''
 
 				if node.state == 'terminated':
 					v4 = []
-					ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
+					ips = {'ip_address' : node.public_ips, 'gateway' : 'NULL', 'netmask' : 'NULL', 'private_ip' : node.private_ips}
 
 					v4.append(ips)
 
-					network = {'v4' : v4}
+					networks = {'v4' : v4}
 
 
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-					'network' : network}
+					'networks' : networks}
 
-					attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
+					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
 					'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extra}
 				if node.state != 'terminated':
 					v4 = []
-					ips = {'ipaddress' : node.public_ips[0], 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips[0]}
+					ips = {'ip_address' : node.public_ips[0], 'gateway' : 'NULL', 'netmask' : 'NULL', 'private_ip' : node.private_ips[0]}
 
 					v4.append(ips)
 
-					network = {'v4' : v4}
+					networks = {'v4' : v4}
 
 
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
-					'network' : network}
+					'networks' : networks}
 
-					attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 
-					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra} 
+					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
+					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra}
 
-			nodesProvider = json.dumps(attr)
+				nodesProvider = json.dumps(attr)
 	if provider == "Azure":
 		pass
 		tenantId = driverUno
@@ -105,7 +107,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				node = idNodes
 	#			print idNod
 				v4 = []
-				ips = {'ipaddress' : node.public_ips, 'gateway' : 'NULL', 'mask' : 'NULL', 'private_ip' : node.private_ips}
+				ips = {'ip_address' : node.public_ips, 'gateway' : 'NULL', 'netmask' : 'NULL', 'private_ip' : node.private_ips}
 
 				v4.append(ips)
 
@@ -115,7 +117,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 				extra = {'instance_type' : node.extra['properties']['hardwareProfile']['vmSize'],
 				'network' : network}
 
-				attr = {'id' : node.extra['properties']['vmId'], 'region' : node.extra['location'], 'name': node.name, 'state' : node.state, 
+				attr = {'id' : node.extra['id'], 'region' : node.extra['location'], 'name': node.name, 'state' : node.state, 
 				'public_ip' : node.public_ips, 'provider' : 'Azure Virtual machines', 'extra' : extra} 
 
 				nodesProvider = json.dumps(node)
