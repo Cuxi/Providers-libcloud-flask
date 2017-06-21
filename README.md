@@ -4,8 +4,12 @@
 
 1. [Flask microframework Introduction](#flask-microframework-introduction)
 2. [How to Work with the Code](#how-to-work-with-the-code)
-    * [Installation](#installation)
+      * [Installation](#installation)
 3. [Scripts](#scripts)
+      * [Explaining variables in differents providers](#explaining-variables-in-differents-providers)
+            1. [Digital Ocean](#digital-ocean)
+            2. [Amazon](#amazon)
+            3. [Azure](#azure)
 
 ## Flask microframework Introduction
 
