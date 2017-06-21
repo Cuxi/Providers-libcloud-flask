@@ -71,8 +71,10 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
 					'networks' : networks}
 
+					extraNode = json.dumps(extra)
+
 					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
-					'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extra}
+					'public_ip' : node.public_ips, 'provider' : 'Amazon', 'extra' : extraNode}
 				if node.state != 'terminated':
 					v4 = []
 					ips = {'ip_address' : node.public_ips[0], 'gateway' : 'NULL', 'netmask' : 'NULL', 'private_ip' : node.private_ips[0]}
@@ -85,8 +87,10 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
 					'networks' : networks}
 
+					extraNode = json.dumps(extra)
+
 					attr = {'id' : node.id, 'region' : region, 'name': node.name, 'state' : node.state, 
-					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extra}
+					'public_ip' : node.public_ips[0], 'provider' : 'Amazon', 'extra' : extraNode}
 
 				nodesProvider = json.dumps(attr)
 	if provider == "Azure":
