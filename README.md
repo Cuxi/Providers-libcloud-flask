@@ -77,14 +77,15 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Oc
 Then, you can see how it works and the differents parts of scripts:
 
 #### Digital Ocean
-     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-     2. [GetNode](#getNode)
-     3. [DeleteNode](#deleteNode)
-     4. [ShutdownNode](#shutdownNode)
-     5. [StartNode](#startNode)
-     6. [RebootNode](#rebootNode)
-     7. [ResizeNode](#resizeNode)
-     8. [CreateNode](#createNode)
+
+1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+2. [GetNode](#getNode)
+3. [DeleteNode](#deleteNode)
+4. [ShutdownNode](#shutdownNode)
+5. [StartNode](#startNode)
+6. [RebootNode](#rebootNode)
+7. [ResizeNode](#resizeNode)
+8. [CreateNode](#createNode)
   
   ##### Variables for connecting with the provider
   
@@ -159,14 +160,14 @@ Then, you can see how it works and the differents parts of scripts:
 
 *Remember that in the case of the Region you must write the id of the datacenter, like us-east-1a*
 
-     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-     2. [GetNode](#getNode)
-     3. [DeleteNode](#deleteNode)
-     4. [ShutdownNode](#shutdownNode)
-     5. [StartNode](#startNode)
-     6. [RebootNode](#rebootNode)
-     7. [ResizeNode](#resizeNode)
-     8. [CreateNode](#createNode)
+1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+2. [GetNode](#getNode)
+3. [DeleteNode](#deleteNode)
+4. [ShutdownNode](#shutdownNode)
+5. [StartNode](#startNode)
+6. [RebootNode](#rebootNode)
+7. [ResizeNode](#resizeNode)
+8. [CreateNode](#createNode)
 
   ##### Variables for connecting with the provider
   
@@ -238,14 +239,14 @@ Then, you can see how it works and the differents parts of scripts:
 
 #### Azure
 
-     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-     2. [GetNode](#getNode)
-     3. [DeleteNode](#deleteNode)
-     4. [ShutdownNode](#shutdownNode)
-     5. [StartNode](#startNode)
-     6. [RebootNode](#rebootNode)
-     7. [ResizeNode](#resizeNode)
-     8. [CreateNode](#createNode)
+1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+2. [GetNode](#getNode)
+3. [DeleteNode](#deleteNode)
+4. [ShutdownNode](#shutdownNode)
+5. [StartNode](#startNode)
+6. [RebootNode](#rebootNode)
+7. [ResizeNode](#resizeNode)
+8. [CreateNode](#createNode)
 
   ##### Variables for connecting with the provider
   
