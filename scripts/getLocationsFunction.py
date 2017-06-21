@@ -61,8 +61,6 @@ def getLocations(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 		listRegions = driver.list_regions()
 
-	#	print listRegions
-
 		nodelocations = []
 
 		for listRegion in listRegions:
@@ -97,9 +95,6 @@ def getLocations(provider,driverUno,driverDos,driverTres,driverCuatro):
 
 			listLocations = driverLocation.list_locations()
 
-	#		print region
-
-	#		print listLocations
 			datacenterArray = []
 			for listLocation in listLocations:
 				flag = False

@@ -61,7 +61,7 @@ def getAllNodes(provider,driverUno,driverDos,driverTres,driverCuatro):
 				network = {'v4' : v4}
 
 
-				extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+				extra = {'launch_time' : node.extra['launch_time'], 'size_slug' : node.extra['instance_type'],
 				'network' : network}
 
 				attr = {'id' : node.id, 'region' : reg, 'name': node.name, 'state' : node.state, 

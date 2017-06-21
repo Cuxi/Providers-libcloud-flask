@@ -68,7 +68,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					networks = {'v4' : v4}
 
 
-					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+					extra = {'launch_time' : node.extra['launch_time'], 'size_slug' : node.extra['instance_type'],
 					'networks' : networks}
 
 					extraNode = json.dumps(extra)
@@ -84,7 +84,7 @@ def getNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 					networks = {'v4' : v4}
 
 
-					extra = {'launch_time' : node.extra['launch_time'], 'instance_type' : node.extra['instance_type'],
+					extra = {'launch_time' : node.extra['launch_time'], 'size_slug' : node.extra['instance_type'],
 					'networks' : networks}
 
 					extraNode = json.dumps(extra)
