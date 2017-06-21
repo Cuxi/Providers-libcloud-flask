@@ -6,10 +6,10 @@
 2. [How to Work with the Code](#how-to-work-with-the-code)
       * [Installation](#installation)
 3. [Scripts](#scripts)
-      * [Explaining variables in differents providers](#explaining-variables-in-differents-providers)
-            1. [Digital Ocean](#digital-ocean)
-            2. [Amazon](#amazon)
-            3. [Azure](#azure)
+4. [Explaining variables in differents providers](#explaining-variables-in-differents-providers)
+     1. [Digital Ocean](#digital-ocean)
+     2. [Amazon](#amazon)
+     3. [Azure](#azure)
 
 ## Flask microframework Introduction
 
@@ -17,11 +17,11 @@ This is a project to use in python with Libcloud's library compute, to create, r
 
 You can see libcloud's files:
 
--Azure : [azure_arm](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/azure_arm.py)
+-[Azure](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/azure_arm.py)
 
--Amazon : [EC2](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/ec2.py)
+-[Amazon](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/ec2.py)
 
--Digital Ocean : [DO](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/digitalocean.py)
+-[Digital Ocean](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/digitalocean.py)
 
 
 ## How to Work with the Code
@@ -72,7 +72,7 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Oc
 ```
 
 
-### Explaining variables in differents providers
+## Explaining variables in differents providers
 
 Then, you can see how it works and the differents parts of scripts:
 
