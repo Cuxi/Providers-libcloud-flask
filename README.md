@@ -6,7 +6,7 @@
 2. [How to Work with the Code](#how-to-work-with-the-code)
       * [Installation](#installation)
 3. [Methods](#methods)
-4. [Methods](#methods)
+     * [Curl request](#curl-request)
      1. [Digital Ocean](#digital-ocean)
      2. [Amazon](#amazon)
      3. [Azure](#azure)
