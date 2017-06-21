@@ -93,68 +93,68 @@ Then, you can see how it works and the differents parts of scripts:
   
   ##### GetNode
     
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
-    ```
-    You need to get your Virtual Machine's information a Node's ID (variable nodeId).
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
+```
+You need to get your Virtual Machine's information a Node's ID (variable nodeId).
     
   ##### DeleteNode
   
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
-    ```
-    You need to delete your Virtual Machine a Node's ID (variable nodeId).
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
+```
+You need to delete your Virtual Machine a Node's ID (variable nodeId).
   
   ##### ShutdownNode
   
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
-    ```
-    You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
+```
+You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
   
   ##### StartNode
   
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
-    ```
-    You need to start your Virtual Machine a Node's ID (variable nodeId).
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
+```
+You need to start your Virtual Machine a Node's ID (variable nodeId).
   
   ##### RebootNode
   
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
-    ```
-    You need to reboot your Virtual Machine a Node's ID (variable nodeId).
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
+```
+You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   ##### ResizeNode
     
-    To use this method you need to add the method resize_node from [resize_node.py](https://github.com/Cuxi/Providers-libcloud-flask/blob/master/scripts/resize_node.py) in your local Digital Ocean's driver.
-  
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
-    ```
-    You need to resize your Virtual Machine:
-    
-      -A Node's ID (variable nodeId).
-      
-      -A Size's name (variable size).
+To use this method you need to add the method resize_node from [resize_node.py](https://github.com/Cuxi/Providers-libcloud-flask/blob/master/scripts/resize_node.py) in your local Digital Ocean's driver.
+
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
+```
+You need to resize your Virtual Machine:
+
+ -A Node's ID (variable nodeId).
+
+ -A Size's name (variable size).
   
   ##### CreateNode
   
-    ```
-    curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"888888","driverTres":"n","driverCuatro":"n","name":"testFlask","size":"512mb","image":"25092162","ex_resource_group":"n","location":"nyc1","ex_network":"n"}' http://localhost:5003/CreateNode
-    ```
-    You need to create your Virtual Machine (node):
-    
-      -A ssh key (variable driverDos).
-      
-      -A name for your node (variable name).
-      
-      -A Size's name (variable size).
-      
-      -A image's ID (variable image).
-      
-      -A location for your node (variable location).  
+```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"888888","driverTres":"n","driverCuatro":"n","name":"testFlask","size":"512mb","image":"25092162","ex_resource_group":"n","location":"nyc1","ex_network":"n"}' http://localhost:5003/CreateNode
+```
+You need to create your Virtual Machine (node):
+
+ -A ssh key (variable driverDos).
+
+ -A name for your node (variable name).
+
+ -A Size's name (variable size).
+
+ -A image's ID (variable image).
+
+ -A location for your node (variable location).  
   
 #### Amazon
 
