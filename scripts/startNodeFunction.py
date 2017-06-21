@@ -65,7 +65,7 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 				types = 'running'
 
-				node = checkStatus.checkStatusAzure(driver, idNod.id, types)
+				node = checkStatus.checkStatus(driver, idNod.id, types)
 
 				if node != 0:
 					nodesProvider = nodeStarted
@@ -91,7 +91,7 @@ def startNode(provider,driverUno,driverDos,driverTres,driverCuatro,nodeId):
 
 				types = 'running'
 
-				node = checkStatus.checkStatus(driver, idNod.id, types)
+				node = checkStatus.checkStatusAzure(driver, idNod.id, types)
 
 				if node != 0:
 					nodesProvider = nodeStarted

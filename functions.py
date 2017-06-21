@@ -39,7 +39,7 @@ class GetAllNodes(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 class GetLocations(Resource):
 	def post(self):
 	 	try:
@@ -66,7 +66,7 @@ class GetLocations(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class GetNode(Resource):
 	def post(self):
@@ -96,7 +96,7 @@ class GetNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class DeleteNode(Resource):
 	def post(self):
@@ -124,7 +124,7 @@ class DeleteNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class CreateNode(Resource):
 	def post(self):
@@ -164,7 +164,7 @@ class CreateNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class ResizeNode(Resource):
 	def post(self):
@@ -194,7 +194,7 @@ class ResizeNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class ShutdownNode(Resource):
 	def post(self):
@@ -222,7 +222,7 @@ class ShutdownNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class StartNode(Resource):
 	def post(self):
@@ -250,7 +250,7 @@ class StartNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 class RebootNode(Resource):
 	def post(self):
@@ -278,7 +278,7 @@ class RebootNode(Resource):
 
 
 	 	except Exception as e:
-	 		return {'error': str(e)}
+	 		return {'error': e.message}
 
 
 api.add_resource(GetAllNodes, '/GetAllNodes')
