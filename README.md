@@ -1,5 +1,12 @@
 # Providers-libcloud-flask
 
+# Table of contents
+
+1. [Flask microframework Introduction](#flask-microframework-introduction)
+2. [How to Work with the Code](#how-to-work-with-the-code)
+    * [Installation](#installation)
+3. [Scripts](#scripts)
+
 ## Flask microframework Introduction
 
 This is a project to use in python with Libcloud's library compute, to create, resize, stop, start, delete and get information of Virtual Machines that we want to have in their cloud compute.  
@@ -13,7 +20,7 @@ You can see libcloud's files:
 -Digital Ocean : [DO](https://github.com/apache/libcloud/blob/trunk/libcloud/compute/drivers/digitalocean.py)
 
 
-### How to Work with the Code
+## How to Work with the Code
 
 Clone this repository:
 
@@ -27,9 +34,12 @@ Visit [Libcloud Page](http://libcloud.readthedocs.io/en/latest/getting_started.h
 
 If you want to use Digital Ocean's resize, it's better if you install Libcloud (Libcloud has no method to resize already).
 
-**Flask extensions or python packages that you should install**
+### Installation
 
-To install extensions:
+The first of all you need to install [python](https://gist.github.com/nikcub/49885e62cf8b0bff8cf9780aeb2bf7e3).
+
+
+Continue installing extensions:
 
 ```
 $ pip install <name_ext>
@@ -39,6 +49,11 @@ $ pip install <name_ext>
 * flask-restful
 
 ## Scripts
+
+First, you must do is run our flask script functions.py in your localhost with this command:
+```
+python functions.py
+```
 
 To execute the scripts you need to execute a command curl, for example:
 
@@ -57,7 +72,7 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Oc
 
 Then, you can see how it works and the differents parts of scripts:
 
-**Digital Ocean**
+#### Digital Ocean
   
   * Variables for connecting with the provider
   
@@ -128,7 +143,7 @@ Then, you can see how it works and the differents parts of scripts:
       
       -A location for your node (variable location).  
   
-**Amazon**
+#### Amazon
 
 *Remember that in the case of the Region you must write the id of the datacenter, like us-east-1a*
 
@@ -200,7 +215,7 @@ Then, you can see how it works and the differents parts of scripts:
       -A image's ID (variable image).
 
 
-**Azure**
+#### Azure
 
   * Variables for connecting with the provider
   
