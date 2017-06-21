@@ -5,8 +5,8 @@
 1. [Flask microframework Introduction](#flask-microframework-introduction)
 2. [How to Work with the Code](#how-to-work-with-the-code)
       * [Installation](#installation)
-3. [Scripts](#scripts)
-4. [Explaining variables in differents providers](#explaining-variables-in-differents-providers)
+3. [Methods](#methods)
+4. [Methods](#methods)
      1. [Digital Ocean](#digital-ocean)
      2. [Amazon](#amazon)
      3. [Azure](#azure)
@@ -52,7 +52,7 @@ $ pip install <name_ext>
 * flask
 * flask-restful
 
-## Scripts
+## Methods
 
 First, you must do is run our flask script functions.py in your localhost with this command:
 ```
@@ -72,52 +72,60 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Oc
 ```
 
 
-## Explaining variables in differents providers
+### Curl request
 
 Then, you can see how it works and the differents parts of scripts:
 
 #### Digital Ocean
+     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+     2. [GetNode](#getNode)
+     3. [DeleteNode](#deleteNode)
+     4. [ShutdownNode](#shutdownNode)
+     5. [StartNode](#startNode)
+     6. [RebootNode](#rebootNode)
+     7. [ResizeNode](#resizeNode)
+     8. [CreateNode](#createNode)
   
-  * Variables for connecting with the provider
+  ##### Variables for connecting with the provider
   
     driverUno : access Key
   
-  * GetNode
+  ##### GetNode
     
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
     ```
     You need to get your Virtual Machine's information a Node's ID (variable nodeId).
     
-  * DeleteNode
+  ##### DeleteNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
     ```
     You need to delete your Virtual Machine a Node's ID (variable nodeId).
   
-  * ShutdownNode
+  ##### ShutdownNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
     ```
     You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
   
-  * StartNode
+  ##### StartNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
     ```
     You need to start your Virtual Machine a Node's ID (variable nodeId).
   
-  * RebootNode
+  ##### RebootNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
     ```
     You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
-  * ResizeNode
+  ##### ResizeNode
     
     To use this method you need to add the method resize_node from [resize_node.py](https://github.com/Cuxi/Providers-libcloud-flask/blob/master/scripts/resize_node.py) in your local Digital Ocean's driver.
   
@@ -130,7 +138,7 @@ Then, you can see how it works and the differents parts of scripts:
       
       -A Size's name (variable size).
   
-  * CreateNode
+  ##### CreateNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"888888","driverTres":"n","driverCuatro":"n","name":"testFlask","size":"512mb","image":"25092162","ex_resource_group":"n","location":"nyc1","ex_network":"n"}' http://localhost:5003/CreateNode
@@ -151,7 +159,16 @@ Then, you can see how it works and the differents parts of scripts:
 
 *Remember that in the case of the Region you must write the id of the datacenter, like us-east-1a*
 
-  * Variables for connecting with the provider
+     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+     2. [GetNode](#getNode)
+     3. [DeleteNode](#deleteNode)
+     4. [ShutdownNode](#shutdownNode)
+     5. [StartNode](#startNode)
+     6. [RebootNode](#rebootNode)
+     7. [ResizeNode](#resizeNode)
+     8. [CreateNode](#createNode)
+
+  ##### Variables for connecting with the provider
   
     driverUno : Access Key ID
     
@@ -159,42 +176,42 @@ Then, you can see how it works and the differents parts of scripts:
     
     driverTres : Region
   
-  * GetNode
+  ##### GetNode
     
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
     ```
     You need to get your Virtual Machine's information a Node's ID (variable nodeId).
     
-  * DeleteNode
+  ##### DeleteNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
     ```
     You need to delete your Virtual Machine a Node's ID (variable nodeId).
   
-  * ShutdownNode
+  ##### ShutdownNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
     ```
     You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
   
-  * StartNode
+  ##### StartNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
     ```
     You need to start your Virtual Machine a Node's ID (variable nodeId).
   
-  * RebootNode
+  ##### RebootNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
     ```
     You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
-  * ResizeNode
+  ##### ResizeNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
@@ -205,7 +222,7 @@ Then, you can see how it works and the differents parts of scripts:
       
       -A Size's name (variable size).
   
-  * CreateNode
+  ##### CreateNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","name":"testFlask","size":"t2.micro","image":"amzn-ami-hvm-2017.03.0.201","ex_resource_group":"n","location":"n","ex_network":"n"}' http://localhost:5003/CreateNode
@@ -221,7 +238,16 @@ Then, you can see how it works and the differents parts of scripts:
 
 #### Azure
 
-  * Variables for connecting with the provider
+     1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
+     2. [GetNode](#getNode)
+     3. [DeleteNode](#deleteNode)
+     4. [ShutdownNode](#shutdownNode)
+     5. [StartNode](#startNode)
+     6. [RebootNode](#rebootNode)
+     7. [ResizeNode](#resizeNode)
+     8. [CreateNode](#createNode)
+
+  ##### Variables for connecting with the provider
   
     driverUno : Directory ID (Tenant ID )
     
@@ -231,42 +257,42 @@ Then, you can see how it works and the differents parts of scripts:
     
     driverCuatro : Key (Password)
   
-  * GetNode
+  ##### GetNode
     
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/GetNode
     ```
     You need to get your Virtual Machine's information a Node's ID (variable nodeId).
     
-  * DeleteNode
+  ##### DeleteNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/DeleteNode
     ```
     You need to delete your Virtual Machine a Node's ID (variable nodeId).
   
-  * ShutdownNode
+  ##### ShutdownNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
     ```
     You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
   
-  * StartNode
+  ##### StartNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/StartNode
     ```
     You need to start your Virtual Machine a Node's ID (variable nodeId).
   
-  * RebootNode
+  ##### RebootNode
   
     ```
     curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key","nodeId":"52344842"}' http://localhost:5003/RebootNode
     ```
     You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
-  * CreateNode
+  ##### CreateNode
   
     At moment this method is not working, there is a problem in library.
   
