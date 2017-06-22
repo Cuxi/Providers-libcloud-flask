@@ -7,9 +7,10 @@
       * [Installation](#installation)
 3. [Methods](#methods)
      * [Curl request](#curl-request)
-     1. [Digital Ocean](#digital-ocean)
-     2. [Amazon](#amazon)
-     3. [Azure](#azure)
+      1. [Digital Ocean](#digital-ocean)
+      2. [Amazon](#amazon)
+      3. [Azure](#azure)
+     * [Response](#response)
 
 ## Flask microframework Introduction
 
@@ -87,6 +88,7 @@ Then, you can see how it works and the differents parts of scripts:
 7. [ResizeNode](#resizenode)
 8. [CreateNode](#createnode)
 9. [GetAllNodes](#getAllnodes)
+10. [GetLocations](#getlocations)
   
   ##### Variables for connecting with the provider
   
@@ -163,6 +165,13 @@ You need to create your Virtual Machine (node):
 curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n"}' http://localhost:5003/GetAllNodes
 ```
 As you can see, you just need to pass access parameters.
+
+  ##### GetLocations
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n"}' http://localhost:5003/GetLocations
+```
+As you can see, you just need to pass access parameters.
   
 #### Amazon
 
@@ -177,6 +186,7 @@ As you can see, you just need to pass access parameters.
 7. [ResizeNode](#resizenode-1)
 8. [CreateNode](#createnode-1)
 9. [GetAllNodes](#getAllnodes-1)
+10. [GetLocations](#getlocations-1)
 
   ##### Variables for connecting with the provider
   
@@ -252,6 +262,13 @@ curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driv
 ```
 As you can see, you just need to pass access parameters.
 
+  ##### GetLocations
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"n","driverCuatro":"n"}' http://localhost:5003/GetLocations
+```
+As you can see, you just need to pass access parameters. But not passing the region in driverTres.
+
 
 #### Azure
 
@@ -264,6 +281,7 @@ As you can see, you just need to pass access parameters.
 7. [ResizeNode](#resizenode-2)
 8. [CreateNode](#createnode-2)
 9. [GetAllNodes](#getAllnodes-2)
+10. [GetLocations](#getlocations-2)
 
   ##### Variables for connecting with the provider
   
@@ -337,12 +355,19 @@ You need to create your Virtual Machine (node):
 curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key"}' http://localhost:5003/GetAllNodes
 ```
 As you can see, you just need to pass access parameters.
+
+  ##### GetLocations
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key"}' http://localhost:5003/GetLocations
+```
+As you can see, you just need to pass access parameters.
       
 ### Response
 
 1. [Boolean](#boolean)
-2. [Node's information]()
-3. [Locations' information]()
+2. [Node's information](#nodeslocation)
+3. [Locations' information](#locationsinformation)
 
 At last but not least, the responses. As you can see if you have made come curl to this api, there are four types of response.
 
@@ -350,6 +375,87 @@ We can make three types of groups depends of response:
 
 #### Boolean
 
+The motehods that return a boolean are: [DeleteNode](#deletenode), [ShutdownNode](#shutdownnode), [StartNode](#startnode), [RebootNode](#rebootnode) and [ResizeNode](#resizenode).
+
+```
+* Hostname was NOT found in DNS cache
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 5003 (#0)
+> POST /ShutdownNode HTTP/1.1
+> User-Agent: curl/7.35.0
+> Host: localhost:5003
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 184
+> 
+* upload completely sent off: 184 out of 184 bytes
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 13
+< Server: Werkzeug/0.12.2 Python/2.7.6
+< Date: Sun, 18 Jun 2017 17:21:08 GMT
+< 
+[
+    true
+]
+* Closing connection 0
+```
+
 #### Node's information
 
+The motehods that return a object/s of node/s are: [GetNode](#getnode), [CreateNode](#createnode) and [GetAllNodes](#getallnodes).
+
+```
+* Hostname was NOT found in DNS cache
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 5003 (#0)
+> POST /GetAllNodes HTTP/1.1
+> User-Agent: curl/7.35.0
+> Host: localhost:5003
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 153
+> 
+* upload completely sent off: 153 out of 153 bytes
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 410
+< Server: Werkzeug/0.12.2 Python/2.7.6
+< Date: Sun, 18 Jun 2017 17:17:00 GMT
+< 
+[
+    "{\"name\": \"testFlask\", \"extra\": {\"instance_type\": \"t2.micro\", \"launch_time\": \"2017-06-18T17:07:55.000Z\", \"network\": {\"v4\": [{\"mask\": \"NULL\", \"ipaddress\": \"34.202.163.22\", \"gateway\": \"NULL\", \"private_ip\": \"172.31.7.60\"}]}}, \"region\": \"us-east-1\", \"public_ip\": \"34.202.163.22\", \"state\": \"running\", \"provider\": \"Amazon\", \"id\": \"i-0b8a2c5eb0314840d\"}"
+]
+* Closing connection 0
+```
+
 #### Locations' information
+
+The motehod that return an object of locations is: [GetLocations](#getlocations).
+
+```
+* Hostname was NOT found in DNS cache
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 5003 (#0)
+> POST /GetLocations HTTP/1.1
+> User-Agent: curl/7.35.0
+> Host: localhost:5003
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 165
+> 
+* upload completely sent off: 165 out of 165 bytes
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 1123
+< Server: Werkzeug/0.12.2 Python/2.7.6
+< Date: Sun, 18 Jun 2017 16:57:24 GMT
+< 
+[
+    "[{\"country\": \"null\", \"datacenter\": [{\"id\": \"nyc1\", \"name\": \"New York 1\"}, {\"id\": \"nyc2\", \"name\": \"New York 2\"}, {\"id\": \"nyc3\", \"name\": \"New York 3\"}], \"city\": \"New York\"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"sfo1\", \"name\": \"San Francisco 1\"}, {\"id\": \"sfo2\", \"name\": \"San Francisco 2\"}], \"city\": \"San Francisco\"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"ams2\", \"name\": \"Amsterdam 2\"}, {\"id\": \"ams3\", \"name\": \"Amsterdam 3\"}], \"city\": \"Amsterdam \"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"sgp1\", \"name\": \"Singapore 1\"}], \"city\": \"Singapore \"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"lon1\", \"name\": \"London 1\"}], \"city\": \"London \"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"fra1\", \"name\": \"Frankfurt 1\"}], \"city\": \"Frankfurt \"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"tor1\", \"name\": \"Toronto 1\"}], \"city\": \"Toronto \"}, {\"country\": \"null\", \"datacenter\": [{\"id\": \"blr1\", \"name\": \"Bangalore 1\"}], \"city\": \"Bangalore \"}]"
+]
+* Closing connection 0
+```
