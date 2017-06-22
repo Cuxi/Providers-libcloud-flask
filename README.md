@@ -79,14 +79,14 @@ Then, you can see how it works and the differents parts of scripts:
 #### Digital Ocean
 
 1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-2. [GetNode](#getNode)
-3. [DeleteNode](#deleteNode)
-4. [ShutdownNode](#shutdownNode)
-5. [StartNode](#startNode)
-6. [RebootNode](#rebootNode)
-7. [ResizeNode](#resizeNode)
-8. [CreateNode](#createNode)
-9. [GetAllNodes](#getAllNodes)
+2. [GetNode](#getnode)
+3. [DeleteNode](#deletenode)
+4. [ShutdownNode](#shutdownnode)
+5. [StartNode](#startnode)
+6. [RebootNode](#rebootnode)
+7. [ResizeNode](#resizenode)
+8. [CreateNode](#createnode)
+9. [GetAllNodes](#getAllnodes)
   
   ##### Variables for connecting with the provider
   
@@ -168,15 +168,15 @@ As you can see, you just need to pass access parameters.
 
 *Remember that in the case of the Region you must write the id of the datacenter, like us-east-1a*
 
-1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-2. [GetNode](#getNode)
-3. [DeleteNode](#deleteNode)
-4. [ShutdownNode](#shutdownNode)
-5. [StartNode](#startNode)
-6. [RebootNode](#rebootNode)
-7. [ResizeNode](#resizeNode)
-8. [CreateNode](#createNode)
-9. [GetAllNodes](#getAllNodes)
+1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider-1)
+2. [GetNode](#getnode-1)
+3. [DeleteNode](#deletenode-1)
+4. [ShutdownNode](#shutdownnode-1)
+5. [StartNode](#startnode-1)
+6. [RebootNode](#rebootnode-1)
+7. [ResizeNode](#resizenode-1)
+8. [CreateNode](#createnode-1)
+9. [GetAllNodes](#getAllnodes-1)
 
   ##### Variables for connecting with the provider
   
@@ -255,15 +255,15 @@ As you can see, you just need to pass access parameters.
 
 #### Azure
 
-1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider)
-2. [GetNode](#getNode)
-3. [DeleteNode](#deleteNode)
-4. [ShutdownNode](#shutdownNode)
-5. [StartNode](#startNode)
-6. [RebootNode](#rebootNode)
-7. [ResizeNode](#resizeNode)
-8. [CreateNode](#createNode)
-9. [GetAllNodes](#getAllNodes)
+1. [Variables for connecting with the provider](#variables-for-connecting-with-the-provider-2)
+2. [GetNode](#getnode-2)
+3. [DeleteNode](#deletenode-2)
+4. [ShutdownNode](#shutdownnode-2)
+5. [StartNode](#startnode-2)
+6. [RebootNode](#rebootnode-2)
+7. [ResizeNode](#resizenode-2)
+8. [CreateNode](#createnode-2)
+9. [GetAllNodes](#getAllnodes-2)
 
   ##### Variables for connecting with the provider
   
