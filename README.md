@@ -366,8 +366,8 @@ As you can see, you just need to pass access parameters.
 ### Response
 
 1. [Boolean](#boolean)
-2. [Node's information](#nodeslocation)
-3. [Locations' information](#locationsinformation)
+2. [Node's information](#nodes-information)
+3. [Locations' information](#locations-information)
 
 At last but not least, the responses. As you can see if you have made come curl to this api, there are four types of response.
 
