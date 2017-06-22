@@ -86,6 +86,7 @@ Then, you can see how it works and the differents parts of scripts:
 6. [RebootNode](#rebootNode)
 7. [ResizeNode](#resizeNode)
 8. [CreateNode](#createNode)
+9. [GetAllNodes](#getAllNodes)
   
   ##### Variables for connecting with the provider
   
@@ -155,6 +156,13 @@ You need to create your Virtual Machine (node):
  -A image's ID (variable image).
 
  -A location for your node (variable location).  
+   
+  ##### GetAllNodes
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Digital Ocean","driverUno":"your access key",   "driverDos":"n","driverTres":"n","driverCuatro":"n"}' http://localhost:5003/GetAllNodes
+```
+As you can see, you just need to pass access parameters.
   
 #### Amazon
 
@@ -168,6 +176,7 @@ You need to create your Virtual Machine (node):
 6. [RebootNode](#rebootNode)
 7. [ResizeNode](#resizeNode)
 8. [CreateNode](#createNode)
+9. [GetAllNodes](#getAllNodes)
 
   ##### Variables for connecting with the provider
   
@@ -180,42 +189,42 @@ driverTres : Region
   ##### GetNode
     
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/GetNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/GetNode
 ```
 You need to get your Virtual Machine's information a Node's ID (variable nodeId).
     
   ##### DeleteNode
   
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/DeleteNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/DeleteNode
 ```
 You need to delete your Virtual Machine a Node's ID (variable nodeId).
   
   ##### ShutdownNode
   
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/ShutdownNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/ShutdownNode
 ```
 You need to shutdown your Virtual Machine a Node's ID (variable nodeId).
   
   ##### StartNode
   
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/StartNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/StartNode
 ```
 You need to start your Virtual Machine a Node's ID (variable nodeId).
   
   ##### RebootNode
   
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"52344842"}' http://localhost:5003/RebootNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/RebootNode
 ```
 You need to reboot your Virtual Machine a Node's ID (variable nodeId).
   
   ##### ResizeNode
   
 ```
-curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","size":"1gb","nodeId":"52344842"}' http://localhost:5003/RebootNode
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n","size":"t2.small","nodeId":"i-0b8a2c5eb0314840d"}' http://localhost:5003/RebootNode
 ```
 You need to resize your Virtual Machine:
 
@@ -235,6 +244,13 @@ You need to create your Virtual Machine (node):
  -A Size's name (variable size).
 
  -A image's ID (variable image).
+ 
+  ##### GetAllNodes
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"EC2","driverUno":"your access key ID","driverDos":"your secret key","driverTres":"your region","driverCuatro":"n"}' http://localhost:5003/GetAllNodes
+```
+As you can see, you just need to pass access parameters.
 
 
 #### Azure
@@ -247,6 +263,7 @@ You need to create your Virtual Machine (node):
 6. [RebootNode](#rebootNode)
 7. [ResizeNode](#resizeNode)
 8. [CreateNode](#createNode)
+9. [GetAllNodes](#getAllNodes)
 
   ##### Variables for connecting with the provider
   
@@ -313,4 +330,26 @@ You need to create your Virtual Machine (node):
  -A location for your node (variable location).
 
  -A Network's name for your node (variable ex_network)
+
+  ##### GetAllNodes
+ 
+ ```
+curl -v -X POST  -H 'Content-Type: application/json' -d '{"provider":"Azure","driverUno":"your tenant ID","driverDos":"your subscription ID","driverTres":"your application ID","driverCuatro":"your password key"}' http://localhost:5003/GetAllNodes
+```
+As you can see, you just need to pass access parameters.
       
+### Response
+
+1. [Boolean](#boolean)
+2. [Node's information]()
+3. [Locations' information]()
+
+At last but not least, the responses. As you can see if you have made come curl to this api, there are four types of response.
+
+We can make three types of groups depends of response:
+
+#### Boolean
+
+#### Node's information
+
+#### Locations' information
