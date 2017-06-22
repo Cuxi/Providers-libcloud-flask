@@ -2,7 +2,7 @@
 
 # Table of contents
 
-1. [Flask microframework Introduction](#flask-microframework-introduction)
+1. [Microframework Introduction](#microframework-introduction)
 2. [How to Work with the Code](#how-to-work-with-the-code)
       * [Installation](#installation)
 3. [Methods](#methods)
@@ -12,7 +12,7 @@
       3. [Azure](#azure)
      * [Response](#response)
 
-## Flask microframework Introduction
+## Microframework Introduction
 
 This is a project to use in python with Libcloud's library compute, to create, resize, stop, start, delete and get information of Virtual Machines that we want to have in their cloud compute.  
 
